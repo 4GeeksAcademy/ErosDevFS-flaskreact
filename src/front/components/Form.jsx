@@ -1,0 +1,42 @@
+import React from "react"
+import { useState } from "react"
+
+function Form(){
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    function sendData(e){
+        e.preventDefault()
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {
+                    "email": email,
+                    "password": password
+                }
+            )
+        }
+        fetch(import.meta.env.VITE_BACKEND_URL + "/api/login", requestOptions)
+        .then(response=>response.json())
+        .then(data=>console.log(data))
+    }
+
+    return(
+        <div>
+            <form className="w-50 mx-auto" onSubmit={sendData}>
+                <div className="mb-3">
+                    <label htmlFor="InputEmail" className="form-label">Email address</label>
+                    <input value={email} onChange={(e)=> setEmail(e.target.value)} type="email" className="form-control"/>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="InputPassword" className="form-label">Email address</label>
+                    <input value={password} onChange={(e)=> setPassword(e.target.value)} type="password" className="form-control"/>
+                </div>
+                <button type="submit" className="btn btn-primary">Login</button>
+            </form>
+        </div>
+    )
+}
+
+export default Form
