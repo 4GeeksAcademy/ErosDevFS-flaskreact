@@ -52,4 +52,4 @@ def signup():
         "message": "User created correctly"
     }
 
-    return jsonify(response_body), 200
+    return jsonify(response_body), 201

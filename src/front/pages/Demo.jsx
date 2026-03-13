@@ -7,7 +7,11 @@ export const Demo = () => {
   const { store, dispatch } = useGlobalReducer()
 
   return (
-    <div className="container">
+    <>
+    {store.auth? 
+      
+      <div className="container">
+    
       <ul className="list-group">
         {/* Map over the 'todos' array from the store and render each item as a list element */}
         {store && store.todos?.map((item) => {
@@ -39,5 +43,9 @@ export const Demo = () => {
         <button className="btn btn-primary">Back home</button>
       </Link>
     </div>
+      :
+      <p>No, no no</p>
+    }
+    </>
   );
 };
