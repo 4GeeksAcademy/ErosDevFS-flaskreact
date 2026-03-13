@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
 
-function Form(){
+function SignupForm(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -17,7 +17,7 @@ function Form(){
                 }
             )
         }
-        fetch(import.meta.env.VITE_BACKEND_URL + "/api/login", requestOptions)
+        fetch(import.meta.env.VITE_BACKEND_URL + "/api/signup", requestOptions)
         .then(response=>response.json())
         .then(data=>console.log(data))
     }
@@ -33,10 +33,10 @@ function Form(){
                     <label htmlFor="InputPassword" className="form-label">Email address</label>
                     <input value={password} onChange={(e)=> setPassword(e.target.value)} type="password" className="form-control"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary">Register</button>
             </form>
         </div>
     )
 }
 
-export default Form
+export default SignupForm
